@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Using Firebase Storage</title>
+    <style media="screen">
+        body{
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #uploader{
+            -webkit-appearance: none;
+            appearance: none;
+            width: 50%;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<progress value="0" max="100" id="uploader">0%</progress>
+<input type="file" value="upload" id="fileButton">
+
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+<script src="js/firebase-storage.js"></script>
+</body>
+</html>
