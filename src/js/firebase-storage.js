@@ -9,37 +9,40 @@
     };
     firebase.initializeApp(config);
 
-    // Get elements
-    var uploader = document.getElementById('uploader');
-    var fileButton = document.getElementById('fileButton');
+    // on branch - Test
+    var storageRef = firebase.storage().ref();
 
-    // Listen for file selection
-    fileButton.addEventListener('change', function (e) {
-        // Get file
-        // var file = e.target.files[0];
-        var file = document.getElementById('fileButton').files[0];
+    function handleFileSelect(event){
+        event.stopPropagation();
+        event.preventDefault();
+        var file = event.target.files[0];
 
-        // Create a storage ref
-        var storageRef = firebase.storage().ref('photos/' + file.name);
+        var metadata = {
+            'contentType': file.type
+        };
 
-        // Upload file
-        var task = storageRef.put(file);
+        // Push to child path
+        // [START oncomplete]
+        storageRef.child('images/' + file.name)
+            .put(file, metadata)
+            .then(function (snapshot) {
+                console.log('Uploaded' , snapshot.totalBytes, 'bytes.');
+                console.log(snapshot.metadata);
+                var url = snapshot.metadata.downloadURLs[0];
+                console.log('File available at', url);
 
-        // Update progress bar
-        task.on('state_change',
-            function progress(snapshot) {
-                var percentage = (snapshot.bytesTrasferred / snapshot.totalBytes) * 100;
-                uploader.value = percentage;
-            },
-            
-            function error(err) {
-                
-            },
+            })
+            .catch(function (error) {
+                // [START onfailure]
+                console.error('Upload failed:', error);
+                // [END onfailure]
+            });
+        // [END oncomplete]
+    }
 
-            function complete() {
-
-            }
-        );
-    })
+    window.onload = function () {
+        document.getElementById('file').addEventListener('change', handleFileSelect, false);
+        // document.getElementById('file').disabled = true;
+    }
 
 })();
