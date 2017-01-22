@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
+        <title>Firebase Web Quickstart</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,6 +15,29 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
+    <div class="container">
+        <div class="row">
+            <h1 id="bigOne"></h1>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBQ4qwqqTRj9aQ4CPo8UMTXumYDl7HuStc",
+            authDomain: "web-quickstart-1f1c1.firebaseapp.com",
+            databaseURL: "https://web-quickstart-1f1c1.firebaseio.com",
+            storageBucket: "web-quickstart-1f1c1.appspot.com",
+            messagingSenderId: "784138686281"
+        };
+        firebase.initializeApp(config);
+
+        var bigOne = document.getElementById('bigOne');
+        var dbRef = firebase.database().ref().child('text');
+        dbRef.on('value', snap => bigOne.innerText = snap.val());
+    </script>
+
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
