@@ -15,38 +15,15 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
-    <div class="container">
-        <div class="row">
-            <h1 id="bigOne"></h1>
-        </div>
-    </div>
 
     <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyBQ4qwqqTRj9aQ4CPo8UMTXumYDl7HuStc",
-            authDomain: "web-quickstart-1f1c1.firebaseapp.com",
-            databaseURL: "https://web-quickstart-1f1c1.firebaseio.com",
-            storageBucket: "web-quickstart-1f1c1.appspot.com",
-            messagingSenderId: "784138686281"
-        };
-        firebase.initializeApp(config);
-
-        var bigOne = document.getElementById('bigOne');
-        var dbRef = firebase.database().ref().child('text');
-        dbRef.on('value', snap => bigOne.innerText = snap.val());
-    </script>
 
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
 
-        <script src="https://code.jquery.com/jquery-{{JQUERY_VERSION}}.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-{{JQUERY_VERSION}}.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -57,5 +34,25 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
+
+    <div class="container">
+        <div class="row">
+            <h1 id="bigOne">
+
+            </h1>
+        </div>
+
+        <div class="row">
+            <pre id="object"></pre>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-{{JQUERY_VERSION}}.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-{{JQUERY_VERSION}}.min.js"><\/script>')</script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
     </body>
 </html>
